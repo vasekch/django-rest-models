@@ -1,4 +1,4 @@
-Django>=2.2,<2.3
+Django>=2.2,<3.1.2
 wheel
 sphinx
 tox
