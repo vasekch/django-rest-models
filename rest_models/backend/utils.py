@@ -14,7 +14,11 @@ def message_from_response(response):
 
 
 try:
-    from django.contrib.postgres.fields import JSONField as JSONFieldLegacy
+    try:
+        from django.db.models import JSONField as JSONFieldLegacy
+    except ImportError:
+        # support for Django < 2.0
+        from django.contrib.postgres.fields import JSONField as JSONFieldLegacy
 except ImportError:
     def JSONField(*args, **kwargs):
         return None
