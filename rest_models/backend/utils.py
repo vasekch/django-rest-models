@@ -24,5 +24,8 @@ except ImportError:
         return None
 else:
     class JSONField(JSONFieldLegacy):
+        def from_db_value(self, value, expression, connection):
+            return value
+
         def get_prep_value(self, value):
             return value
